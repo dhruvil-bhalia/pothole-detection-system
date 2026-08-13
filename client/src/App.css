@@ -1,0 +1,1708 @@
+body {
+  background: #f4f7fc;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.dashboard-container {
+  padding: 25px;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.stats-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 220px;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card h2 {
+  margin-top: 10px;
+  font-size: 2rem;
+}
+
+.blue {
+  background: #2196f3;
+}
+
+.red {
+  background: #f44336;
+}
+
+.orange {
+  background: #ff9800;
+}
+
+.green {
+  background: #4caf50;
+}
+
+.form-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.map-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.table-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.badge-high {
+  background: #f44336;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.badge-medium {
+  background: #ff9800;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.badge-low {
+  background: #4caf50;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+@keyframes blink {
+
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+@keyframes slideIn {
+
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+
+}
+
+@keyframes slideOut {
+
+  from {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+
+}
+
+/* ===========================
+   Nearest Pothole Animation
+=========================== */
+
+@keyframes pulsePothole {
+
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.4);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}
+
+.nearest-pothole {
+
+  animation: pulsePothole 1s infinite;
+
+}
+
+/* ==============================
+   Emergency Warning Banner
+============================== */
+
+@keyframes emergencyFlash {
+
+  0% {
+    background: #dc3545;
+    color: white;
+  }
+
+  50% {
+    background: #ffc107;
+    color: black;
+  }
+
+  100% {
+    background: #dc3545;
+    color: white;
+  }
+
+}
+
+.driver-alert {
+
+  animation: emergencyFlash 0.8s infinite;
+
+  border-radius: 15px;
+
+  padding: 20px;
+
+  font-weight: bold;
+
+  box-shadow: 0 0 25px rgba(255,0,0,0.6);
+
+}
+
+
+.modern-card{
+
+padding:25px;
+
+border-radius:18px;
+
+color:white;
+
+box-shadow:0 12px 25px rgba(0,0,0,.15);
+
+transition:.35s;
+
+cursor:pointer;
+
+min-height:190px;
+
+position:relative;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+overflow:hidden;
+
+}
+
+.modern-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 25px 50px rgba(0,0,0,.28);
+
+}
+
+.modern-card::before{
+
+content:"";
+
+position:absolute;
+
+top:-120%;
+
+left:-40%;
+
+width:60%;
+
+height:300%;
+
+background:rgba(255,255,255,.18);
+
+transform:rotate(25deg);
+
+transition:.8s;
+
+}
+
+.modern-card:hover::before{
+
+left:120%;
+
+}
+
+.modern-card .icon{
+
+position:absolute;
+
+top:20px;
+
+right:20px;
+
+font-size:35px;
+
+opacity:.3;
+
+transition:.35s;
+
+}
+
+.modern-card:hover .icon{
+
+transform:scale(1.2) rotate(10deg);
+
+opacity:.5;
+
+}
+
+.modern-card h6{
+
+margin-top:35px;
+
+font-size:16px;
+
+font-weight:600;
+
+}
+
+.modern-card small{
+
+margin-top:10px;
+
+display:block;
+
+font-size:14px;
+
+opacity:.85;
+
+word-break:break-word;
+
+}
+
+.modern-card h2{
+
+font-size:36px;
+
+font-weight:bold;
+
+}
+
+.map-dashboard{
+
+background:white;
+
+border-radius:20px;
+
+padding:20px;
+
+box-shadow:0 12px 25px rgba(0,0,0,.08);
+
+margin-top:30px;
+
+margin-bottom:30px;
+
+}
+
+.map-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+}
+
+.map-header h3{
+
+margin:0;
+
+font-weight:700;
+
+}
+
+.map-header p{
+
+margin:0;
+
+color:gray;
+
+}
+
+.live-badge{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+font-weight:bold;
+
+color:red;
+
+}
+
+.live-dot{
+
+width:12px;
+
+height:12px;
+
+border-radius:50%;
+
+background:red;
+
+animation:pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+50%{
+
+transform:scale(1.5);
+
+opacity:.5;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+.map-info{
+
+display:flex;
+
+justify-content:space-around;
+
+margin-top:20px;
+
+padding:20px;
+
+background:#f8f9fa;
+
+border-radius:15px;
+
+font-size:18px;
+
+font-weight:600;
+
+}
+
+.analytics-card{
+
+background:white;
+
+padding:25px;
+
+border-radius:20px;
+
+box-shadow:0 12px 25px rgba(0,0,0,.08);
+
+margin:30px 0;
+
+}
+
+.analytics-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+}
+
+.analytics-header h3{
+
+margin:0;
+
+font-weight:700;
+
+}
+
+.analytics-header p{
+
+margin:0;
+
+color:gray;
+
+}
+
+.chart-wrapper{
+
+padding:20px;
+
+border-radius:15px;
+
+background:#fafafa;
+
+}
+
+.report-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+margin-top:25px;
+
+}
+
+.report-buttons button{
+
+padding:12px 30px;
+
+font-size:17px;
+
+border-radius:10px;
+
+}
+
+.chart-card{
+
+background:white;
+
+padding:20px;
+
+border-radius:15px;
+
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+height:100%;
+
+}
+
+.records-card{
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+margin-top:35px;
+
+}
+
+.records-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+}
+
+.records-header p{
+
+color:gray;
+
+margin:0;
+
+}
+
+.search-box{
+
+display:flex;
+
+align-items:center;
+
+border:1px solid #ddd;
+
+border-radius:12px;
+
+padding:10px 15px;
+
+margin:20px 0;
+
+background:white;
+
+}
+
+.search-box i{
+
+margin-right:10px;
+
+color:gray;
+
+}
+
+.search-box input{
+
+border:none;
+
+outline:none;
+
+width:100%;
+
+}
+
+.filter-buttons{
+
+display:flex;
+
+gap:10px;
+
+margin-bottom:20px;
+
+flex-wrap:wrap;
+
+}
+
+.records-footer{
+
+margin-top:20px;
+
+text-align:right;
+
+font-size:15px;
+
+color:gray;
+
+font-weight:500;
+
+}
+
+.camera-dashboard{
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+margin:35px 0;
+
+}
+
+.camera-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+}
+
+.camera-header h3{
+
+margin:0;
+
+font-weight:700;
+
+}
+
+.camera-header p{
+
+margin:0;
+
+color:#6c757d;
+
+}
+
+.camera-status{
+
+display:flex;
+
+justify-content:space-around;
+
+background:#f8f9fa;
+
+padding:15px;
+
+border-radius:15px;
+
+margin-bottom:25px;
+
+font-weight:600;
+
+}
+
+.camera-box{
+
+background:#fafafa;
+
+padding:20px;
+
+border-radius:15px;
+
+}
+
+.camera-ui{
+
+background:white;
+
+padding:20px;
+
+border-radius:20px;
+
+box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.camera-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+}
+
+.camera-top h4{
+
+font-weight:700;
+
+margin:0;
+
+}
+
+.camera-top p{
+
+margin:0;
+
+color:gray;
+
+}
+
+.camera-live{
+
+overflow:hidden;
+
+border-radius:20px;
+
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+}
+
+.camera-buttons{
+
+margin-top:18px 0;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.camera-buttons button{
+
+width:280px;
+
+height:55px;
+
+font-size:18px;
+
+font-weight:600;
+
+border-radius:14px;
+
+transition:.3s;
+
+}
+
+.camera-buttons button:hover{
+
+transform:translateY(-3px);
+
+}
+
+.camera-footer{
+
+margin-top:25px;
+
+display:flex;
+
+justify-content:space-around;
+
+background:#f8f9fa;
+
+padding:15px 25px;
+
+border-radius:15px;
+
+font-weight:600;
+
+}
+
+.camera-ui{
+
+background:white;
+
+padding:25px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.camera-live{
+
+margin:20px 0;
+
+}
+
+.camera-buttons{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+margin:25px 0;
+
+}
+
+.camera-capture-btn{
+
+width:320px;
+
+height:60px;
+
+border-radius:15px;
+
+font-size:20px;
+
+font-weight:700;
+
+letter-spacing:.5px;
+
+transition:.3s;
+
+}
+
+.camera-capture-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 10px 25px rgba(25,135,84,.35);
+
+}
+
+.camera-footer{
+
+display:flex;
+
+justify-content:space-around;
+
+background:#f8f9fa;
+
+padding:15px;
+
+border-radius:15px;
+
+font-weight:600;
+
+margin-top:20px;
+
+}
+
+.camera-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+}
+
+.camera-top h4{
+
+font-weight:700;
+
+margin:0;
+
+}
+
+.camera-top p{
+
+margin:0;
+
+color:gray;
+
+}
+
+/* ===========================
+   AI IMAGE VIEWER
+=========================== */
+
+.image-modal{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,.85);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:99999;
+
+backdrop-filter:blur(8px);
+
+animation:fadeIn .25s ease;
+}
+
+.image-modal-content{
+
+width:80%;
+
+max-width:1000px;
+
+background:white;
+
+border-radius:20px;
+
+overflow:hidden;
+
+box-shadow:0 30px 70px rgba(0,0,0,.45);
+
+animation:zoomIn .3s ease;
+}
+
+.image-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:20px 30px;
+
+background:#1e293b;
+
+color:white;
+}
+
+.image-header h3{
+
+margin:0;
+
+font-weight:bold;
+}
+
+.image-header p{
+
+margin:0;
+
+color:#b8c3d6;
+}
+
+.close-btn{
+
+border:none;
+
+background:#ef4444;
+
+color:white;
+
+width:45px;
+
+height:45px;
+
+border-radius:50%;
+
+font-size:22px;
+
+cursor:pointer;
+
+transition:.3s;
+}
+
+.close-btn:hover{
+
+transform:rotate(90deg);
+
+background:#dc2626;
+}
+
+.image-preview{
+
+padding:30px;
+
+background:#f3f4f6;
+
+display:flex;
+
+justify-content:center;
+}
+
+.image-preview img{
+
+max-width:100%;
+
+max-height:600px;
+
+border-radius:15px;
+
+box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+
+.image-footer{
+
+display:flex;
+
+justify-content:space-around;
+
+padding:18px;
+
+background:#f8fafc;
+
+font-weight:600;
+
+border-top:1px solid #ddd;
+}
+
+@keyframes zoomIn{
+
+from{
+
+transform:scale(.8);
+
+opacity:0;
+}
+
+to{
+
+transform:scale(1);
+
+opacity:1;
+}
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+}
+
+to{
+
+opacity:1;
+}
+
+}
+
+.activity-card{
+
+background:white;
+
+border-radius:20px;
+
+padding:25px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+height:100%;
+
+}
+
+.activity-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+}
+
+.activity-list{
+
+max-height:420px;
+
+overflow-y:auto;
+
+}
+
+.activity-item{
+
+display:flex;
+
+align-items:center;
+
+padding:15px;
+
+border-bottom:1px solid #eee;
+
+transition:.3s;
+
+}
+
+.activity-item:hover{
+
+background:#f8fafc;
+
+}
+
+.activity-icon{
+
+font-size:28px;
+
+margin-right:15px;
+
+width:50px;
+
+text-align:center;
+
+}
+
+.chart-card{
+
+background:#fff;
+
+padding:20px;
+
+border-radius:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+height:420px;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.chart-container{
+
+position:relative;
+
+height:320px;
+
+width:100%;
+
+}
+
+.compact-analytics{
+
+padding:25px;
+
+margin-top:30px;
+
+}
+
+.activity-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    width:100%;
+
+    height:320px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.activity-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:15px;
+
+}
+
+.activity-header h4{
+
+margin:0;
+
+font-weight:700;
+
+}
+
+.activity-list{
+
+    height:220px;
+
+    overflow-y:auto;
+
+}
+
+.activity-item{
+
+display:flex;
+
+align-items:center;
+
+padding:12px;
+
+border-radius:12px;
+
+margin-bottom:10px;
+
+background:#f8fafc;
+
+transition:.3s;
+
+}
+
+.activity-item:hover{
+
+transform:translateX(5px);
+
+background:#eef4ff;
+
+}
+
+.activity-icon{
+
+width:45px;
+
+height:45px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:20px;
+
+background:#2563eb;
+
+color:white;
+
+border-radius:12px;
+
+margin-right:15px;
+
+}
+
+.activity-info h6{
+
+margin:0;
+
+font-size:15px;
+
+font-weight:600;
+
+}
+
+.activity-info small{
+
+color:#64748b;
+
+}
+
+.empty-activity{
+
+    height:220px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+}
+
+.empty-icon{
+
+font-size:45px;
+
+margin-bottom:10px;
+
+}
+
+.activity-card{
+
+background:white;
+
+border-radius:20px;
+
+padding:20px;
+
+height:360px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.activity-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:18px;
+
+}
+
+.activity-live{
+
+background:#ef4444;
+
+color:white;
+
+padding:4px 10px;
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:bold;
+
+}
+
+.activity-list{
+
+height:270px;
+
+overflow-y:auto;
+
+}
+
+.activity-event{
+
+display:flex;
+
+align-items:center;
+
+padding:12px;
+
+margin-bottom:12px;
+
+border-radius:12px;
+
+background:#f8fafc;
+
+transition:.3s;
+
+}
+
+.activity-event:hover{
+
+transform:translateX(5px);
+
+background:#eef4ff;
+
+}
+
+.activity-event-icon{
+
+width:46px;
+
+height:46px;
+
+border-radius:12px;
+
+background:#2563eb;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:20px;
+
+margin-right:14px;
+
+color:white;
+
+}
+
+.activity-title{
+
+font-weight:600;
+
+}
+
+.empty-feed{
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+height:250px;
+
+text-align:center;
+
+color:#94a3b8;
+
+}
+
+.empty-icon{
+
+font-size:60px;
+
+margin-bottom:15px;
+
+}
+
+/* ===========================
+   Connected Vehicles
+=========================== */
+
+.vehicle-network-card{
+    background:#ffffff;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    border:1px solid #ececec;
+}
+
+.vehicle-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.vehicle-header h5{
+    margin:0;
+    font-weight:700;
+}
+
+.vehicle-count{
+    background:#198754;
+    color:#fff;
+    padding:6px 14px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.vehicle-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.vehicle-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#f8f9fa;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    transition:0.3s;
+
+}
+
+.vehicle-item:hover{
+
+    background:#eef4ff;
+
+    transform:translateY(-2px);
+
+}
+
+.vehicle-name{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#212529;
+
+}
+
+.vehicle-location{
+
+    margin-top:5px;
+
+    font-size:13px;
+
+    color:#6c757d;
+
+}
+
+.vehicle-status{
+
+    background:#198754;
+
+    color:white;
+
+    padding:5px 12px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.no-vehicles{
+
+    text-align:center;
+
+    color:#888;
+
+    padding:30px 0;
+
+}
+
+/* ===============================
+   Vehicle Network Dashboard
+================================*/
+
+.vehicle-network-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    margin-top:20px;
+
+}
+
+.vehicle-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.vehicle-header h4{
+
+    font-weight:700;
+
+    margin:0;
+
+}
+
+.vehicle-header p{
+
+    color:#6c757d;
+
+    margin:0;
+
+}
+
+.summary-box{
+
+    background:#198754;
+
+    color:white;
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+.vehicle-grid-card{
+
+    background:#f8f9fa;
+
+    border-radius:15px;
+
+    padding:20px 28px;
+
+    min-height:220px;
+
+    width:100%;
+
+    height:100%;
+
+    border:2px solid transparent;
+}
+
+.vehicle-grid-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#198754;
+
+}
+
+.vehicle-grid-card h5{
+
+    font-weight:700;
+
+}
+
+.online-badge{
+
+    background:#198754;
+
+    color:white;
+
+    padding:6px 14px;
+
+    border-radius:25px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+/* ===============================
+   Vehicle Grid
+================================*/
+
+.vehicle-grid{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:space-evenly;
+
+    align-items:stretch;
+
+    gap:25px;
+
+}
+
+.vehicle-grid-card{
+
+    flex:1;
+
+    min-width:500px;
+
+    max-width:700px;
+
+    background:#f8f9fa;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    transition:.3s;
+
+    border:2px solid transparent;
+
+}
+
+.vehicle-grid-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#198754;
+
+}
+

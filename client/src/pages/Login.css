@@ -1,0 +1,255 @@
+/* Full Screen Background */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.login-page {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: linear-gradient(
+      135deg,
+      #0f2027,
+      #203a43,
+      #2c5364
+  );
+
+  animation: gradientMove 10s ease infinite;
+
+  background-size: 300% 300%;
+
+}
+
+@keyframes gradientMove {
+
+  0% {
+    background-position: left;
+  }
+
+  50% {
+    background-position: right;
+  }
+
+  100% {
+    background-position: left;
+  }
+
+}
+
+/* Card */
+
+.login-card {
+
+  width: 1000px;
+
+  height: 580px;
+
+  background: rgba(255,255,255,0.1);
+
+  backdrop-filter: blur(18px);
+
+  border-radius: 25px;
+
+  overflow: hidden;
+
+  display: flex;
+
+  box-shadow: 0 25px 60px rgba(0,0,0,.35);
+
+}
+
+/* Left Side */
+
+.login-left {
+
+  width: 50%;
+
+  color: white;
+
+  padding: 60px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+}
+
+.login-left h1{
+
+  font-size:42px;
+
+  font-weight:700;
+
+}
+
+.login-left h3{
+
+  margin-top:20px;
+
+  color:#87CEEB;
+
+}
+
+.login-left p{
+
+  margin-top:25px;
+
+  color:#ddd;
+
+  line-height:30px;
+
+  font-size:18px;
+
+}
+
+/* Right */
+
+.login-right{
+
+  width:50%;
+
+  background:white;
+
+  padding:60px;
+
+}
+
+.login-title{
+
+  text-align:center;
+
+  margin-bottom:35px;
+
+  font-weight:bold;
+
+}
+
+.login-input{
+
+  margin-bottom:20px;
+
+}
+
+.login-btn{
+
+  width:100%;
+
+  height:50px;
+
+  border:none;
+
+  border-radius:12px;
+
+  background:#0d6efd;
+
+  color:white;
+
+  font-size:18px;
+
+  font-weight:bold;
+
+  transition:.3s;
+
+}
+
+.login-btn:hover{
+
+  transform:translateY(-2px);
+
+  background:#0b5ed7;
+
+}
+
+.remember-row{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin:20px 0;
+
+  width:100%;
+
+}
+
+.remember-row label{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  margin:0;
+
+}
+
+.remember-row span{
+
+  color:#0d6efd;
+
+  cursor:pointer;
+
+  font-size:15px;
+
+}
+
+.remember-row span:hover{
+
+  text-decoration:underline;
+
+}
+
+.footer{
+
+  margin-top:35px;
+
+  text-align:center;
+
+  color:gray;
+
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.login-card{
+
+flex-direction:column;
+
+width:95%;
+
+height:auto;
+
+}
+
+.login-left,
+.login-right{
+
+width:100%;
+
+}
+
+.login-left{
+
+padding:40px;
+
+text-align:center;
+
+}
+
+}
