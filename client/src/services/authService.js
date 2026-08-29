@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API =
-  "http://localhost:5000/api/auth";
+  "https://pothole-detection-system-6usv.onrender.com/api/auth";
 
 export const login = async (loginData) => {
 

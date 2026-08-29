@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/potholes";
+const API_URL = "https://pothole-detection-system-6usv.onrender.com/api/potholes";
 
 // -----------------------------
 // JWT Token

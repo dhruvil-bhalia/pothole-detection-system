@@ -90,7 +90,7 @@ router.post(
     try {
       res.status(200).json({
         success: true,
-        imageUrl: `http://localhost:5000/uploads/${req.file.filename}`,
+        imageUrl: `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`,
       });
     } catch (error) {
       res.status(500).json({

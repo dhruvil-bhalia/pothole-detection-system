@@ -113,7 +113,7 @@ try {
   console.log(potholeData);
 
   const res = await axios.post(
-    "http://localhost:5000/api/potholes/add",
+    "https://pothole-detection-system-6usv.onrender.com/api/potholes/add",
     potholeData
   );
 
