@@ -129,7 +129,7 @@ router.post("/login", async (req, res) => {
           role: user.role,
         },
 
-        "MY_SECRET_KEY",
+        process.env.JWT_SECRET,
 
         {
           expiresIn: "7d",
