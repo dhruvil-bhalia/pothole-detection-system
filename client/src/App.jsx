@@ -1062,11 +1062,11 @@ return (
 
     <div className="d-flex align-items-center">
 
-      <span
-        className="badge bg-primary me-3 p-2"
-      >
-        👤 {localStorage.getItem("name")}
-      </span>
+<span
+  className="badge bg-primary me-3 p-2"
+>
+  👤 {role === "admin" ? "Admin" : "Driver"}
+</span>
 
       <button
         className="btn btn-danger"
