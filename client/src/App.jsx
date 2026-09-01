@@ -511,13 +511,15 @@ Longitude : ${Number(newPothole.longitude).toFixed(5)}
   // Receive Online Vehicle List
   // ===========================
 
-  socket.on("vehicle-list", (vehicleList) => {
+socket.on("vehicle-list", (vehicleList) => {
 
-    console.log("🚗 Online Vehicles:", vehicleList);
+  console.log("🚗🚗🚗 ONLINE VEHICLE COUNT:", vehicleList.length);
 
-    setVehicles(vehicleList);
+  console.table(vehicleList);
 
-  });
+  setVehicles(vehicleList);
+
+});
 
   // ===========================
   // Live GPS Tracking
@@ -616,17 +618,80 @@ useEffect(() => {
     }
   };
 
-  const getLocation = () => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setLatitude(position.coords.latitude);
-        setLongitude(position.coords.longitude);
-      },
-      (error) => {
-          toast.error(error.message);
+const getLocation = () => {
+
+  if (!navigator.geolocation) {
+    toast.error("❌ Geolocation is not supported by this browser.");
+    return;
+  }
+
+  toast.info("📍 Getting your current location...");
+
+  navigator.geolocation.getCurrentPosition(
+
+    (position) => {
+
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+
+      console.log("✅ CURRENT GPS LOCATION:", {
+        latitude: lat,
+        longitude: lng,
+        accuracy: position.coords.accuracy,
+      });
+
+      // Replace manual values with actual GPS location
+      setLatitude(lat);
+      setLongitude(lng);
+
+      toast.success(
+        `📍 Location detected! Accuracy: ${Math.round(
+          position.coords.accuracy
+        )} m`
+      );
+
+    },
+
+    (error) => {
+
+      console.error("❌ GPS ERROR:", error);
+
+      if (error.code === 1) {
+
+        toast.error(
+          "❌ Location permission denied. Please allow location access."
+        );
+
+      } else if (error.code === 2) {
+
+        toast.error(
+          "❌ Location unavailable. Check your GPS/location services."
+        );
+
+      } else if (error.code === 3) {
+
+        toast.error(
+          "⏱ Location request timed out. Try again."
+        );
+
+      } else {
+
+        toast.error(
+          "❌ Unable to get current location."
+        );
+
       }
-    );
-  };
+
+    },
+
+    {
+      enableHighAccuracy: false,
+      timeout: 15000,
+      maximumAge: 60000,
+    }
+
+  );
+};
 
 const checkNearbyPotholes = (
   userLat,
@@ -747,12 +812,13 @@ const handleSubmit = async () => {
       imageUrl,
     });
     
-    await addPothole({
-      latitude: Number(latitude),
-      longitude: Number(longitude),
-      severity,
-      imageUrl,
-    });
+await addPothole({
+  latitude: Number(latitude),
+  longitude: Number(longitude),
+  severity,
+  imageUrl,
+  vehicleId,
+});
 
     setLatitude("");
     setLongitude("");
@@ -767,6 +833,12 @@ addActivity(
 "🚗",
 "High Severity Pothole Detected"
 );
+
+    addActivity(
+      "🚗",
+      `Pothole Detected by ${vehicleId}`
+    );
+
   } catch (error) {
     console.error(error);
   }

@@ -28,10 +28,15 @@ const potholeSchema = new mongoose.Schema(
       default: "",
     },
 
-    detectedBy: {
-      type: String,
-      default: "AI System",
-    },
+detectedBy: {
+  type: String,
+  default: "AI System",
+},
+
+vehicleId: {
+  type: String,
+  default: "Unknown",
+},
 
     detectionCount: {
       type: Number,

@@ -45,46 +45,95 @@ io.on("connection", (socket) => {
 
   console.log("🚗 Driver Connected:", socket.id);
 
-  // Receive driver's GPS location
-socket.on("driver-location", (location) => {
+  // ============================
+  // DRIVER LOCATION
+  // ============================
 
-  drivers[socket.id] = {
+  socket.on("driver-location", (location) => {
 
-    vehicleId: location.vehicleId,
+    const vehicleId = location.vehicleId;
 
-    latitude: location.latitude,
+    console.log(
+      `📍 Location received from ${vehicleId}`
+    );
 
-    longitude: location.longitude,
+    // ==========================================
+    // REMOVE OLD CONNECTION OF SAME VEHICLE
+    // ==========================================
 
-    status: "Online",
+    Object.keys(drivers).forEach((socketId) => {
 
-    lastSeen: new Date().toLocaleTimeString(),
+      if (
+        socketId !== socket.id &&
+        drivers[socketId]?.vehicleId === vehicleId
+      ) {
 
-  };
+        console.log(
+          `♻ Removing duplicate connection: ${vehicleId}`
+        );
 
-  console.log(
-    "📍 Vehicle Updated:",
-    drivers[socket.id]
-  );
+        delete drivers[socketId];
 
-  // Send updated vehicle list to all connected clients
-  io.emit("vehicle-list", Object.values(drivers));
+      }
 
-});
+    });
 
-socket.on("disconnect", () => {
+    // ==========================================
+    // STORE CURRENT VEHICLE CONNECTION
+    // ==========================================
 
-  console.log(
-    "❌ Vehicle Disconnected:",
-    socket.id
-  );
+    drivers[socket.id] = {
 
-  delete drivers[socket.id];
+      vehicleId: vehicleId,
 
-  // Notify all clients with the updated online vehicle list
-  io.emit("vehicle-list", Object.values(drivers));
+      latitude: Number(location.latitude),
 
-});
+      longitude: Number(location.longitude),
+
+      status: "Online",
+
+      lastSeen: new Date().toLocaleTimeString(),
+
+    };
+
+    console.log(
+      "🚗 Current Vehicle:",
+      drivers[socket.id]
+    );
+
+    // ==========================================
+    // SEND UNIQUE VEHICLE LIST
+    // ==========================================
+
+    io.emit(
+      "vehicle-list",
+      Object.values(drivers)
+    );
+
+  });
+
+
+  // ============================
+  // DRIVER DISCONNECTED
+  // ============================
+
+  socket.on("disconnect", () => {
+
+    console.log(
+      "❌ Vehicle Disconnected:",
+      socket.id
+    );
+
+    // Remove only this socket
+    delete drivers[socket.id];
+
+    // Send updated list
+    io.emit(
+      "vehicle-list",
+      Object.values(drivers)
+    );
+
+  });
 
 });
 

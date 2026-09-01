@@ -110,6 +110,11 @@ router.post("/add", async (req, res) => {
   console.log(req.body);
 
   try {
+
+    const vehicleId = req.body.vehicleId || "Unknown Vehicle";
+
+console.log("🚗 Vehicle ID:", vehicleId);
+
     console.log("REQ BODY:");
     console.log(req.body);
 
@@ -154,11 +159,27 @@ if (pothole) {
   pothole.detectedBy =
     req.body.detectedBy || pothole.detectedBy;
 
+  pothole.vehicleId = vehicleId;
+
   pothole.confidence =
     req.body.confidence || pothole.confidence;
 
   pothole.imageUrl =
     req.body.imageUrl || pothole.imageUrl;
+
+  pothole.history.push({
+    vehicleId: vehicleId,
+    detectedBy: req.body.detectedBy || "AI System",
+    confidence: req.body.confidence || 0,
+    detectedAt: new Date(),
+  });
+
+  pothole.priority = calculatePriority(
+    pothole.severity,
+    pothole.detectionCount
+  );
+
+  await pothole.save();
 
   pothole.priority = calculatePriority(
 
@@ -195,9 +216,11 @@ pothole = await Pothole.create({
 
     imageUrl: req.body.imageUrl || "",
 
-    detectedBy: req.body.detectedBy || "AI System",
+detectedBy: req.body.detectedBy || "AI System",
 
-    detectionCount: 1,
+vehicleId: vehicleId,
+
+detectionCount: 1,
 
     priority: calculatePriority(
         req.body.severity,
@@ -206,19 +229,23 @@ pothole = await Pothole.create({
 
     status: "Pending",
 
-    history: [
+history: [
 
-        {
+  {
 
-            detectedBy:
-                req.body.detectedBy || "AI System",
+    vehicleId: vehicleId,
 
-            confidence:
-                req.body.confidence || 0,
+    detectedBy:
+        req.body.detectedBy || "AI System",
 
-        },
+    confidence:
+        req.body.confidence || 0,
 
-    ],
+    detectedAt: new Date(),
+
+  },
+
+],
 
 });
 

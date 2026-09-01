@@ -80,29 +80,32 @@ function CameraCapture({
             response.data.boxedImage
           );
 
-            const potholeData = {
-              latitude:
-                position.coords.latitude,
+const potholeData = {
+  latitude:
+    position.coords.latitude,
 
-              longitude:
-                position.coords.longitude,
+  longitude:
+    position.coords.longitude,
 
-              severity:
-                response.data
-                  .detections[0]
-                  .severity,
+  severity:
+    response.data
+      .detections[0]
+      .severity,
 
-              confidence:
-                response.data
-                  .detections[0] 
-                  .confidence,
+  confidence:
+    response.data
+      .detections[0]
+      .confidence,
 
-                  detectedBy:
-                  vehicleId,
+  detectedBy:
+    "AI System",
 
-              imageUrl:
-                uploadedImageUrl,
-            };
+  vehicleId:
+    vehicleId,
+
+  imageUrl:
+    uploadedImageUrl,
+};
 
 console.log("Sending to Node...");
 console.log(potholeData);
