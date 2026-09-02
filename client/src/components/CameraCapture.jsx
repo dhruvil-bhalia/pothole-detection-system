@@ -50,11 +50,14 @@ function CameraCapture({
         "capture.jpg"
       );
 
-      const response =
-        await axios.post(
-          "http://127.0.0.1:5001/detect",
-          formData
-        );
+const AI_API_URL =
+  import.meta.env.VITE_AI_API_URL;
+
+const response =
+  await axios.post(
+    `${AI_API_URL}/detect`,
+    formData
+  );
 
        console.log(
         "BOXED IMAGE:",

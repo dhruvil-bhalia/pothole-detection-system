@@ -1,6 +1,6 @@
 from turtle import width
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from ultralytics import YOLO
 import os
@@ -11,9 +11,31 @@ import shutil
 app = Flask(__name__)
 CORS(app)
 
-model = YOLO(
-    r"runs/detect/train-3/weights/best.pt"
+UPLOAD_FOLDER = os.path.join(
+    os.path.dirname(__file__),
+    "uploads"
 )
+
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+
+@app.route("/uploads/<filename>")
+def uploaded_file(filename):
+    return send_from_directory(
+        UPLOAD_FOLDER,
+        filename
+    )
+
+model_path = os.path.join(
+    os.path.dirname(__file__),
+    "runs",
+    "detect",
+    "train-3",
+    "weights",
+    "best.pt"
+)
+
+model = YOLO(model_path)
 
 
 @app.route("/detect", methods=["POST"])
@@ -101,7 +123,7 @@ def detect():
 
         print("SELECTED IMAGE:", boxed_image)
 
-        upload_folder = "../server/uploads"
+        upload_folder = UPLOAD_FOLDER
 
         boxed_filename = (
             f"boxed_{uuid.uuid4()}.jpg"
@@ -118,7 +140,7 @@ def detect():
         )
 
         boxed_image_url = (
-            f"http://localhost:5000/uploads/{boxed_filename}"
+            f"{request.host_url.rstrip('/')}/uploads/{boxed_filename}"
         )
 
     if os.path.exists(temp_file):
